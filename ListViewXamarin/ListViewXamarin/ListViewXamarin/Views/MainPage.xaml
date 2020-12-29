@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ListViewXamarin;assembly=ListViewXamarin"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
+             x:Class="ListViewXamarin.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <local:Behavior/>
+    </ContentPage.Behaviors>
+
+    <StackLayout >
+        <syncfusion:SfListView x:Name="ToDoListView" ItemSize="60" IsStickyHeader="True" ItemsSource="{Binding ToDoList}" DragStartMode="OnHold,OnDragIndicator" SelectionMode="None">
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Frame HasShadow="True" Padding="0">
+                        <Frame.InputTransparent>
+                            <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
+                        </Frame.InputTransparent>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="60" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="textLabel" Text="{Binding Name}" Grid.Column="0" FontSize="15" TextColor="#333333" VerticalOptions="Center" HorizontalOptions="Start" Margin="5,0,0,0" />
+                            <syncfusion:DragIndicatorView Grid.Column="2" ListView="{x:Reference ToDoListView}" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Grid Padding="10, 20, 20, 20">
+                                    <Image Source="DragIndicator.png" VerticalOptions="Center" HorizontalOptions="Center" />
+                                </Grid>
+                            </syncfusion:DragIndicatorView>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+        <Button x:Name="saveButton" Text="Save" BackgroundColor="#949cdf" HeightRequest="50" Command="{Binding SaveOrderCommand}"/>
+    </StackLayout>
+</ContentPage>
