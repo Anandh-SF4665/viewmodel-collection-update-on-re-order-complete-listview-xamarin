@@ -1,2 +1,1 @@
-# viewmodel-collection-update-on-re-order-complete-listview-xamarin
-How to update ViewModel collection after re-ordering of ListView items are complete in Xamarin.Forms (SfListView)
+**[View document in Syncfusion Xamarin Knowledge base](https://www.syncfusion.com/kb/12220/how-to-update-viewmodel-collection-after-re-ordering-of-listview-items-are-complete-in)**
