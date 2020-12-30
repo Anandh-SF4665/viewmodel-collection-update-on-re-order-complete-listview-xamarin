@@ -14,6 +14,7 @@ namespace ListViewXamarin
         #region Fields
 
         private string name;
+        private string categoryName;
         #endregion
 
         #region Constructor
@@ -34,6 +35,15 @@ namespace ListViewXamarin
             {
                 name = value;
                 OnPropertyChanged("Name");
+            }
+        }
+        public string CategoryName
+        {
+            get { return categoryName; }
+            set
+            {
+                categoryName = value;
+                OnPropertyChanged("CategoryName");
             }
         }
         #endregion

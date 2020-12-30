@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ListViewXamarin;assembly=ListViewXamarin"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
              x:Class="ListViewXamarin.MainPage">
 
     <ContentPage.BindingContext>
@@ -15,6 +16,23 @@
 
     <StackLayout >
         <syncfusion:SfListView x:Name="ToDoListView" ItemSize="60" IsStickyHeader="True" ItemsSource="{Binding ToDoList}" DragStartMode="OnHold,OnDragIndicator" SelectionMode="None">
+            <syncfusion:SfListView.DataSource>
+                <data:DataSource>
+                    <data:DataSource.GroupDescriptors>
+                        <data:GroupDescriptor PropertyName="CategoryName" />
+                    </data:DataSource.GroupDescriptors>
+                </data:DataSource>
+            </syncfusion:SfListView.DataSource>
+            <syncfusion:SfListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.BackgroundColor>
+                            <OnPlatform x:TypeArguments="Color" Android="#eeeeee" iOS="#f7f7f7" WinPhone="#f2f2f2"/>
+                        </Grid.BackgroundColor>
+                        <Label Text="{Binding Key}" FontSize="14" TextColor="#333333" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="15,0,0,0" />
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfListView.GroupHeaderTemplate>
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Frame HasShadow="True" Padding="0">
