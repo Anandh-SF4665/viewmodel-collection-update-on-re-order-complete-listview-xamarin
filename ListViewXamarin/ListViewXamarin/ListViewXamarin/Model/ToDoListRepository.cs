@@ -31,10 +31,27 @@ namespace ListViewXamarin
                 var todoItem = new ToDoItem()
                 {
                     Name = toDoLists[i],
+                    CategoryName = GetCategoryList(i)
                 };
                 todoList.Add(todoItem);
             }
             return todoList;
+        }
+
+        private string GetCategoryList(int pos)
+        {
+            string toDoCategory;
+
+            if (pos < 4)
+                toDoCategory = toDoCategoryLists[0];
+            else if (pos < 8)
+                toDoCategory = toDoCategoryLists[1];
+            else if (pos < 13)
+                toDoCategory = toDoCategoryLists[2];
+            else
+                toDoCategory = toDoCategoryLists[3];
+
+            return toDoCategory;
         }
 
         string[] toDoLists = new string[]
@@ -60,6 +77,15 @@ namespace ListViewXamarin
             "Book transportation",
             "Order wedding cake",
         };
+
+        string[] toDoCategoryLists = new string[]
+        {
+            "This Week",
+            "Next Week",
+            "Next Month",
+            "Later"
+        };
+
         #endregion
     }
 }
